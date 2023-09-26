@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Adicionar/Editar Usuário</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="nome" value="Nome:" />
+            <p:inputText id="nome" value="#{usuarioController.novoUsuario.nome}" required="true" />
+
+            <h:outputLabel for="email" value="Email:" />
+            <p:inputText id="email" value="#{usuarioController.novoUsuario.email}" required="true" />
+
+            <p:commandButton value="Salvar" action="#{usuarioController.adicionarUsuario}" rendered="#{empty usuarioController.novoUsuario.id}" />
+            <p:commandButton value="Atualizar" action="#{usuarioController.editarUsuario(usuarioController.novoUsuario)}" rendered="#{not empty usuarioController.novoUsuario.id}" />
+        	<p:commandButton value="Excluir" action="#{usuarioController.excluirUsuario(usuarioController.novoUsuario)}" rendered="#{not empty usuarioController.novoUsuario.id}" />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
