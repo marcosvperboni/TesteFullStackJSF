@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+	version="2.3">
+
+	<managed-bean>
+		<managed-bean-name>usuarioController</managed-bean-name>
+		<managed-bean-class>br.com.projeto.controller.UsuarioController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{usuarioController.adicionarUsuario}</from-action>
+			<to-view-id>/listarUsuarios.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{usuarioController.editarUsuario}</from-action>
+			<to-view-id>/listarUsuarios.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{usuarioController.excluirUsuario}</from-action>
+			<to-view-id>/listarUsuarios.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>		
+		<navigation-case>
+			<from-action>#{loginController.login}</from-action>
+			<to-view-id>/gerenciarUsuarios.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
